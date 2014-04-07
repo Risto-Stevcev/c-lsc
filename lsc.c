@@ -53,7 +53,7 @@ find_label(char *dirname)
 
     dp = opendir (dirname);
     if (dp != NULL) {
-        while (ep = readdir (dp)) {
+        while ((ep = readdir (dp))) {
             if (strncmp(ep->d_name, LABEL_PREFIX, strlen(LABEL_PREFIX)) == 0) {
                 if (ends_with(ep->d_name, "red"))
                     return RED;
@@ -101,7 +101,7 @@ main (int argc, char **argv)
 
     dp = opendir (lookup_dir);
     if (dp != NULL) {
-        while (ep = readdir (dp)) {
+        while ((ep = readdir (dp))) {
             if (ep->d_type == DT_DIR) {
                 char current_path[strlen(lookup_dir) + strlen(ep->d_name) + 1];
                 strcpy(current_path, lookup_dir);
